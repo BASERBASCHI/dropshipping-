@@ -1,59 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Dropshipping Fair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 </head>
-<body class="flex flex-col pt-16 gap-6 h-screen w-screen">
-    <h1 class="text-5xl font-black text-center">Dropshiping fair</h1>
-    <h2 class="text-xl font-semibold text-gray-400 text-center">Season 2</h2>
+<body class="bg-black text-white font-sans h-auto min-h-screen overflow-y-auto relative">
 
-    <p class="text-4xl font-black text-center">Come, Build,<br> Sell, and Earn</p>
-    <p class="text-lg text-center">Join us for an inspiring journey into <br> the world of dropshipping.</p>
-
-    <div class="flex items-center justify-center ">
-    <button class="bg-white text-black text-lg font-black px-8 py-3 rounded-full w-fit  ">REGISTER</button>
+    <!-- Background Lights -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/3 w-72 h-72 bg-purple-500 opacity-30 rounded-full filter blur-3xl animate-pulse" aria-hidden="true"></div>
+        <div class="absolute top-2/3 right-1/4 w-72 h-72 bg-blue-500 opacity-30 rounded-full filter blur-3xl animate-pulse delay-200" aria-hidden="true"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-pink-500 opacity-30 rounded-full filter blur-3xl animate-pulse delay-500" aria-hidden="true"></div>
     </div>
+    <!-- Background Beams Effect (Purple Rain) -->
+<canvas id="purpleRainCanvas" class="absolute inset-0 pointer-events-none"></canvas>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dropshipping Fair</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="container">
-            
-            <div class="grid">
-                <div class="card">
-                    <h2>Come</h2>
-                    <p>Join our vibrant community of entrepreneurs</p>
-                </div>
-                <div class="card">
-                    <h2>Build</h2>
-                    <p>Create your unique dropshipping business</p>
-                </div>
-                <div class="card">
-                    <h2>Sell</h2>
-                    <p>Connect with customers and grow your sales</p>
-                </div>
-                <div class="card">
-                    <h2>Earn</h2>
-                    <p>Achieve financial freedom through dropshipping</p>
-                </div>
-            </div>
-            <footer>
-                <p>© 2025 Dropshipping Fair. All rights reserved.</p>
-            </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("purpleRainCanvas");
+        const ctx = canvas.getContext("2d");
+        let beams = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Beam {
+            constructor() {
+                this.x = Math.random() * canvas.width; // Random horizontal position
+                this.y = Math.random() * -canvas.height; // Start above the screen
+                this.length = Math.random() * 40 + 20; // Random beam length
+                this.speed = Math.random() * 3 + 2; // Random falling speed
+                this.opacity = Math.random() * 0.6 + 0.3; // Random opacity for depth effect
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = Math.random() * -canvas.height; // Reset position to keep rain effect going
+                }
+            }
+
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.strokeStyle = "rgba(138, 43, 226, 0.8)"; // Purple beam color
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x, this.y + this.length);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function createBeams() {
+            for (let i = 0; i < 80; i++) { // Number of beams
+                beams.push(new Beam());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            beams.forEach((beam) => {
+                beam.update();
+                beam.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        createBeams();
+        animate();
+    });
+</script>
+
+
+    <div class="flex flex-col items-center justify-center px-6 relative z-10 min-h-screen h-auto py-20">
+        <!-- Heading without Gradient and Glowing Effect -->
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 animate-fadeIn opacity-100 font-poppins">
+            DROPSHIPPING FAIR
+        </h1>
+
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-400 mb-6 animate-fadeIn delay-150 opacity-100 font-poppins">
+            Season 2
+        </h2>
+
+        <p class="text-xl sm:text-2xl text-gray-300 mb-8 animate-fadeIn delay-300 opacity-100 font-poppins font-bold">
+            Come, Build, Sell and Earn
+        </p>
+
+        <a href="https://lu.ma/4e0xixtf" class="cursor-pointer bg-white hover:bg-gray-300 text-black font-black px-10 py-4 rounded-full text-lg mt-6 mb-12 transition transform hover:scale-110 hover:shadow-xl hover:text-red-700 focus:ring focus:ring-red-500 border-2 border-transparent relative overflow-hidden">
+            Register Now 
+            <span class="absolute inset-0 border-2 border-red-500 animate-border"></span>
+        </a>
+        
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl animate-fadeIn delay-500 opacity-100">
+            <div class="card"><h2>Come</h2><p>Join our vibrant community of entrepreneurs</p></div>
+            <div class="card"><h2>Build</h2><p>Create your unique dropshipping business</p></div>
+            <div class="card"><h2>Sell</h2><p>Connect with customers and grow your sales</p></div>
+            <div class="card"><h2>Earn</h2><p>Achieve financial freedom through dropshipping</p></div>
         </div>
-    </body>
-    </html>
-    
 
+
+<!-- Last Year's Photos Section -->
+<section class="mt-10 text-center relative">
+    <h2 class="text-3xl font-extrabold text-white mb-6">Last Year's Highlights</h2>
+    <div class="overflow-x-auto px-6 hide-scrollbar relative">
+        <div class="relative inline-flex space-x-6 p-4" id="photoContainer">
+            <!-- Hover highlight effect -->
+            <div class="highlight absolute rounded-lg transition-all duration-300 opacity-0"></div>
+
+            <!-- Images -->
+            <img src="image/img2.jpg" alt="Dropshipping Fair 2024 - Image 2" class="photo-card">
+            <img src="image/img3.jpg" alt="Dropshipping Fair 2024 - Image 3" class="photo-card">
+            <img src="image/img4.jpg" alt="Dropshipping Fair 2024 - Image 4" class="photo-card">
+            <img src="image/img5.jpg" alt="Dropshipping Fair 2024 - Image 5" class="photo-card">
+            <img src="image/img6.jpg" alt="Dropshipping Fair 2024 - Image 6" class="photo-card">
+            <img src="image/img7.jpg" alt="Dropshipping Fair 2024 - Image 7" class="photo-card">
+            <img src="image/img8.jpg" alt="Dropshipping Fair 2024 - Image 8" class="photo-card">
+        </div>
+    </div>
+</section>
+
+<style>
+    .photo-card {
+        width: 256px; /* Same as w-64 */
+        height: 256px; /* Same as h-64 */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        transition: transform 0.3s ease-in-out;
+        position: relative;
+        z-index: 2; /* Ensures image stays above */
+    }
+
+    .photo-card:hover {
+        transform: scale(1.05);
+    }
+
+    /* Moving Highlight Effect */
+    .highlight {
+        position: absolute;
+        width: 256px;
+        height: 256px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+        z-index: 1; /* Keeps it behind the images */
+    }
+</style>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const highlight = document.querySelector(".highlight");
+        const images = document.querySelectorAll(".photo-card");
+        const container = document.querySelector("#photoContainer");
+
+        images.forEach((img) => {
+            img.addEventListener("mouseenter", function () {
+                const { left, top, width, height } = img.getBoundingClientRect();
+                const containerOffset = container.getBoundingClientRect();
+
+                highlight.style.transform = `translate(${left - containerOffset.left}px, ${top - containerOffset.top}px)`;
+                highlight.style.width = `${width}px`;
+                highlight.style.height = `${height}px`;
+                highlight.style.opacity = "1";
+            });
+        });
+
+        container.addEventListener("mouseleave", () => {
+            highlight.style.opacity = "0";
+        });
+    });
+</script>
+
+<style>
+    .hide-scrollbar {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 0.5s ease-in-out forwards; }
+    .card {
+        background: linear-gradient(to bottom, #222, #111);
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+        text-align: left;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    .card h2 { margin-bottom: 10px; font-weight: bold; transition: color 0.3s ease-in-out; }
+    .card:hover h2 { color: #ffcc00; }
+    .font-poppins { font-family: 'Poppins', sans-serif; }
+</style>
+
+    <footer class="my-10 text-gray-400 text-sm animate-fadeIn delay-700 opacity-100">
+        © 2025 Dropshipping Fair. All rights reserved.
+    </footer>
 </body>
-</html>
