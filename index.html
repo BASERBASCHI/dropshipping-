@@ -34,15 +34,15 @@
             constructor() {
                 this.x = Math.random() * canvas.width; // Random horizontal position
                 this.y = Math.random() * -canvas.height; // Start above the screen
-                this.length = Math.random() * 40 + 20; // Random beam length
-                this.speed = Math.random() * 3 + 2; // Random falling speed
+                this.length = Math.random() * 30 + 15; // Beam length
+                this.speed = Math.random() * 1.5 + 0.5; // Slower falling speed
                 this.opacity = Math.random() * 0.6 + 0.3; // Random opacity for depth effect
             }
 
             update() {
                 this.y += this.speed;
                 if (this.y > canvas.height) {
-                    this.y = Math.random() * -canvas.height; // Reset position to keep rain effect going
+                    this.y = Math.random() * -canvas.height; // Reset position
                 }
             }
 
@@ -59,7 +59,7 @@
         }
 
         function createBeams() {
-            for (let i = 0; i < 80; i++) { // Number of beams
+            for (let i = 0; i < 40; i++) { // Reduced number of beams
                 beams.push(new Beam());
             }
         }
@@ -81,22 +81,34 @@
 
     <div class="flex flex-col items-center justify-center px-6 relative z-10 min-h-screen h-auto py-20">
         <!-- Heading without Gradient and Glowing Effect -->
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 animate-fadeIn opacity-100 font-poppins">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-6 animate-fadeIn opacity-100 font-montserrat bg-gradient-to-t from-gray-600 to-gray-300 bg-clip-text text-transparent tracking-tight relative">
             DROPSHIPPING FAIR
         </h1>
+        
+        <!-- Add Montserrat font link -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+        
+        
 
-        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-400 mb-6 animate-fadeIn delay-150 opacity-100 font-poppins">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-400 mb-12 animate-fadeIn delay-150 opacity-100 font-poppins">
             Season 2
         </h2>
+        
 
         <p class="text-xl sm:text-2xl text-gray-300 mb-8 animate-fadeIn delay-300 opacity-100 font-poppins font-bold">
             Come, Build, Sell and Earn
         </p>
+        <a href="https://lu.ma/4e0xixtf" 
+    class="relative inline-block px-10 py-4 text-lg font-black text-black bg-white rounded-full mt-6 mb-12 
+           transition-transform duration-300 hover:scale-110 hover:shadow-xl hover:text-red-700 
+           focus:ring focus:ring-red-500 overflow-hidden group border-2 border-transparent">
 
-        <a href="https://lu.ma/4e0xixtf" class="cursor-pointer bg-white hover:bg-gray-300 text-black font-black px-10 py-4 rounded-full text-lg mt-6 mb-12 transition transform hover:scale-110 hover:shadow-xl hover:text-red-700 focus:ring focus:ring-red-500 border-2 border-transparent relative overflow-hidden">
-            Register Now 
-            <span class="absolute inset-0 border-2 border-red-500 animate-border"></span>
-        </a>
+    <span class="absolute inset-0 rounded-full transition-all duration-300 group-hover:border-gradient"></span>
+    
+    Register Now 
+</a>
+
+
         
 
 
@@ -215,3 +227,4 @@
         © 2025 Dropshipping Fair. All rights reserved.
     </footer>
 </body>
+
